@@ -671,12 +671,86 @@ const HN5_Pri_sob_ASA_cof_ros=function(
 
 //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
 
+
+const HN7_SVF=function( k_v ){
+
+    var out = "";
+
+    //:The type of variable will determine how we
+    //:escape it for SQL query.
+    var tab_typ={
+        "iid" : "INT"
+    ,   "i_x" : "INT"
+    ,   "i_y" : "INT"
+    ,   "nam" : "STR"
+    ,   "url" : "STR"
+    };;
+
+    var key=( k_v[ 0 ] );
+    var val=( k_v[ 1 ] );
+    var typ=( tab_typ[ key ] );
+    if(!typ){ throw("[HN7_ERR:VALUE_NOT_IN_TYPE_TABLE]"); };
+
+    if( "INT" == typ ){
+        out = ( Math.floor( val ) ).toString()
+    }else
+    if( "STR" == typ ){
+        out = val;
+    
+        //:Hackish filtering of dis-allowed characters.
+        //:ALLOW:
+        //:     1: "_" because good for identifiers.
+        out = out.split("+" ).join("");
+        out = out.split("-" ).join("");
+        out = out.split("*" ).join("");
+        out = out.split("/" ).join("");
+        out = out.split("\\").join("");
+        out = out.split("." ).join("");
+
+        out =( "'" + out + "'" );
+    }else{
+        throw("[HN7_ERR:UNKNOWN_TYPE_IN_TYPE_TABLE]");
+    };;
+
+    return( out );
+};;
+
 //:Run File_And_Parameters.
 //:Gets file contentents and replaces parameters with
 //:query string values before running.
 const HN7_Run_fap=function( sob ){ "use strict"
 
-    HN5_End_002( sob, "[TODO:HN7_Run_fap]" );
+    sob.pof=( sob.dat ); //:path_of_file
+
+    fs.readFile( sob.pof , (err,cof)=>{ //:------------------://
+        if( err ){ 
+            throw("[HN7_E01]:" + HN5_err_CTO_str( err ) ); 
+        };;
+
+        //:Edit contents_of_file ( cof ) so that it
+        //:is loaded with values from query.
+        for( var k_v in Object.entries( sob.pam ) ){
+
+            var tok_fin=( "{{" + k_v[0] + "}}" );
+            var tok_rep=(  HN7_SVF( k_v )  );  
+            cof = cof.split( tok_fin ).join( tok_rep );
+        };;
+
+        sob.cof=( cof );
+        HN3_Run_cof( sob ).then(( sob )=>{
+
+            if( !sob.ros){ throw("[HN7_E03]"); };
+            HN5_Pri_sob_ASA_cof_ros( sob );
+            HN5_End_001( sob );
+
+        }).catch((err)=>{
+
+            HN5_Wri_002(sob,"[HN7_E02]");
+            HN5_End_001( sob );
+        });;
+
+    });; //:----------------------------------[ fs.readFile ]://
+   
 };;
 
 //://////////////////////////////////////////////////////////://
@@ -735,8 +809,8 @@ const HN2_Rou=function( req , res ){ "use strict"
 
     ,   "/WHO_AMI":[ "./WHO_AMI._" , "JS" ]
 
-    ,   "/UPDATE_TAB_001"
-        :[ "./SQL/UPDATE_TAB_001._" , "HN7_Run_fap" ]
+    ,   "/TAB_001_UPDATE"
+        :[ "./SQL/TAB_001_UPDATE._" , "HN7_Run_fap" ]
 
         //:M:Matching. Routes matching their served files.   ://
         //:-:This is so we can run files locally or on server://

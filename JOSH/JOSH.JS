@@ -89,7 +89,7 @@
     const API_Get_Exa=function(){
         
         var cbf=( API_Get_Exa_CBF );
-        API_Get_004( "UPDATE_TAB_001" , {}, cbf, "R_T" );
+        API_Get_004( "TAB_001_UPDATE" , {}, cbf, "R_T" );
 
     };;
 
