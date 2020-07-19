@@ -1,9 +1,11 @@
 
-    var pib_i_x=null;
-    var pib_i_y=null;
-    var pib_nam=null;
-    var pib_url=null;
+    //: pib: Parameter_Input_Box
+    var pib_i_x=null; 
+    var pib_i_y=null; 
+    var pib_nam=null; 
+    var pib_url=null; 
 
+    //: piv: Parameter_Input_Value ( pib.val() )
     var piv_i_x=null;
     var piv_i_y=null;
     var piv_nam=null;
