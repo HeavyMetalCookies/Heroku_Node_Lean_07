@@ -69,12 +69,18 @@
                 };;};;
             };;//://///////////////////////////:[API_Get_004]://
 
+    const Ind_Lin=function( msg ){
+        msg = msg.split("\n").join( "\n" + "    " );
+        return( msg );
+    };;
+
     const API_Get_Exa_CBF=function( r_t ){
         var msg=(""
         +   "[API_Get_Exa_CBF:r_t]"
-        +   "((("
-        +    r_t
-        +   ")))"
+        +   "<<<"
+        +   "\n"
+        +    Ind_Lin( r_t )
+        +   ">>>"
         );;
         alert( msg );
     };;
