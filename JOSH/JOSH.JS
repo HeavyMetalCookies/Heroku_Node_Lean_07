@@ -1,4 +1,14 @@
 
+    var pib_i_x=null;
+    var pib_i_y=null;
+    var pib_nam=null;
+    var pib_url=null;
+
+    var piv_i_x=null;
+    var piv_i_y=null;
+    var piv_nam=null;
+    var piv_url=null;
+
     $( document ).prop( "title" , "[JOSH.*]" );
 
             const API_Get_004=function( 
@@ -87,15 +97,20 @@
         alert( msg );
     };;
     const API_Get_Exa=function(){
+
+        piv_i_x=( pib_i_x.value() || 0              );
+        piv_i_y=( pib_i_y.value() || 0              );
+        piv_nam=( pib_nam.value() || "DEFAULT_NAME" );
+        piv_url=( pib_url.value() || "DEFAULT__URL" );
         
         var cbf=( API_Get_Exa_CBF );
         API_Get_004( 
             "TAB_001_UPDATE" 
         ,   {
-                i_x: 1
-            ,   i_y: 2
-            ,   nam: "BOOGALA_BOO"
-            ,   url: "www.boogalaboo.com"
+                i_x: piv_i_x
+            ,   i_y: piv_i_y
+            ,   nam: piv_nam
+            ,   url: piv_url
 
             }
         ,   cbf
@@ -120,8 +135,17 @@
     CreateDocumentBodyIfNotExists();
     var doc_bod=$( document.body );
 
+
+
     doc_bod.append(
         $("<button>")
             .text( "TEST" )
             .click( API_Get_Exa )
+        
+    ,   (pib_i_x =( $("<input>").attr({type:"text"}) ) )
+    ,   (pib_i_y =( $("<input>").attr({type:"text"}) ) )
+    ,   (pib_nam =( $("<input>").attr({type:"text"}) ) )
+    ,   (pib_url =( $("<input>").attr({type:"text"}) ) )
     );;
+
+
