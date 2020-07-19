@@ -683,7 +683,7 @@ const HN7_SVF=function( k_v ){
     ,   "i_x" : "INT"
     ,   "i_y" : "INT"
     ,   "nam" : "STR"
-    ,   "url" : "STR"
+    ,   "url" : "URL"
     };;
 
     var key=( k_v[ 0 ] );
@@ -715,7 +715,20 @@ const HN7_SVF=function( k_v ){
         out = out.split("." ).join("");
 
         out =( "'" + out + "'" );
-    }else{
+    }else
+    if( "URL" == typ ){
+
+        //:Made a "url" type because we can't filter out
+        //:characters that would be needed in URL.
+
+        out = val;
+        out = out.split("+" ).join("");
+        out = out.split("-" ).join("");
+        out = out.split("*" ).join("");
+        out = out.split("\\").join("");
+        out = out.split("." ).join("");
+        out =( "'" + out + "'" );
+    }else
         throw("[HN7_ERR:UNKNOWN_TYPE_IN_TYPE_TABLE]");
     };;
 
