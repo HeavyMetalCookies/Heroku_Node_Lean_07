@@ -713,6 +713,10 @@ const HN7_SVF=function( k_v ){
         out = out.split("/" ).join("");
         out = out.split("\\").join("");
         out = out.split("." ).join("");
+        out = out.split(":" ).join("");
+        out = out.split("%" ).join("");
+        out = out.split("'" ).join("");
+        out = out.split('"' ).join("");
 
         out =( "'" + out + "'" );
     }else
