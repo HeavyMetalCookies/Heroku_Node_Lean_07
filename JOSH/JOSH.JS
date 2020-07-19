@@ -98,10 +98,10 @@
     };;
     const API_Get_Exa=function(){
 
-        piv_i_x=( pib_i_x.value() || 0              );
-        piv_i_y=( pib_i_y.value() || 0              );
-        piv_nam=( pib_nam.value() || "DEFAULT_NAME" );
-        piv_url=( pib_url.value() || "DEFAULT__URL" );
+        piv_i_x=( pib_i_x.val() || 0              );
+        piv_i_y=( pib_i_y.val() || 0              );
+        piv_nam=( pib_nam.val() || "DEFAULT_NAME" );
+        piv_url=( pib_url.val() || "DEFAULT__URL" );
         
         var cbf=( API_Get_Exa_CBF );
         API_Get_004( 
