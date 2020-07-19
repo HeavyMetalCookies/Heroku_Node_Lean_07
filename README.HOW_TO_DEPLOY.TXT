@@ -15,7 +15,13 @@ Deploy:
 
         ( step 6 in EDIT_AND_RUN.SH )
 
-    7. ( Below should all be on one line )
+    CONFIGURE_PROJECT_TO_USE_YOUR_SERVICES:
+    7. EDIT: WHO_AMI._ 
+        7.1.0 : Put your heroku app's url into the string. 
+        7.1.1 : Omit trailing slashes.
+        7.1.2 : Omit transfer protocol ("http"/"https")
+
+    8. ( Below should all be on one line )
 
         heroku addons:create 
         heroku-postgresql:hobby-dev 
@@ -23,14 +29,14 @@ Deploy:
         --app      "prj-name" 
         --name "dab-prj-name"
 
-        ( step 7 in EDIT_AND_RUN.SH )
+        ( step 8 in EDIT_AND_RUN.SH )
 
     LINK_REPO_TO_HEROKU_AND_DEPLOY:
 
-    8. git remote add heroku "https://git.heroku.com/prj-name.git"
-    9. git remote -v   ## verify remote has been setup
-   10. git push heroku master
-   11. Browser[ https://prj-name.herokuapp.com/ ]
+    9. git remote add heroku "https://git.heroku.com/prj-name.git"
+   10. git remote -v   ## verify remote has been setup
+   11. git push heroku master
+   12. Browser[ https://prj-name.herokuapp.com/ ]
 
     -John Mark Isaac Madison
 
