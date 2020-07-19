@@ -136,16 +136,17 @@
     var doc_bod=$( document.body );
 
 
-
+    var I =("<input>");
+    var T =("text"   );
     doc_bod.append(
         $("<button>")
             .text( "TEST" )
             .click( API_Get_Exa )
         
-    ,   (pib_i_x =( $("<input>").attr({type:"text"}) ) )
-    ,   (pib_i_y =( $("<input>").attr({type:"text"}) ) )
-    ,   (pib_nam =( $("<input>").attr({type:"text"}) ) )
-    ,   (pib_url =( $("<input>").attr({type:"text"}) ) )
+    ,   (pib_i_x =( $(I).attr({type:T,placeholder:"i_x"}) ) )
+    ,   (pib_i_y =( $(I).attr({type:T,placeholder:"i_y"}) ) )
+    ,   (pib_nam =( $(I).attr({type:T,placeholder:"nam"}) ) )
+    ,   (pib_url =( $(I).attr({type:T,placeholder:"url"}) ) )
     );;
 
 
