@@ -1,12 +1,13 @@
 //://////////////////////////////////////////////////////////://
 
-//:HN6: Heroku_Node(lean):06
+//:HN7: Heroku_Node(lean):07
 //:     HN1: Minimal example to serve Html + Javascript.
 //:     HN2: Serve File as text, promises, routing refactor.
 //:     HN3: SQL execution from file on server.
 //:     HN4: CRUD operations demonstration
 //:     HN5: Refactor to procedural and use sob everywhere.
 //:     HN6: UI calling servlet: <app_bas_url>/JOSH.HT
+//:     HN7: UI calling servlet with parameters.
 
 //:FUNCTION_INDEX:
 
@@ -39,6 +40,9 @@
 
     //: HN6_Ser_Fil_JAS         : Serve_File: JavaScript
     //: HN6_Ser_Fil_HTM         : Serve_File: HTML
+
+    //: HN7_SVF                 : SQL Variable Formatting
+    //: HN7_Run_fap             : Run File_And_Parameters
 
 //:IMPORTS:
 
@@ -935,6 +939,7 @@ HN1_Mai();
                 01: First project in Heroku_Node project series
                 ;;: End a multi-line  statement
                 ==: Equality Comparison
+                SC: Denotes a cut+pasted code snippet (ShortCut)
                 []: Array literal or array access.
                 fs: file_system, built-in Node.js package.
                 if: Denotes condition required to execute block
@@ -951,6 +956,9 @@ HN1_Mai();
                HN2: HerokuNode(lean)02 ( Namespace )
                HN3: HerokuNode(lean)03 ( Namespace )
                HN4: HerokuNode(lean)04 ( Namespace )
+               HN5: Heroku_Node(lean)#5 ( namespace/prefix )
+               HN6: Heroku_Node(lean)#6 ( namespace/prefix )
+               HN7: Heroku_Node(lean)#7 ( namespace/prefix )
                NFO: Not_Filled_Out
                POR: Shorthand. SEE[ PORT ]
                UTF: Unicode Transformation Format (ASCI++)
@@ -966,12 +974,17 @@ HN1_Mai();
                env: contains virtual machine's environment vars
                err: An error string. MAYBE error object.
                for: denotes a for-loop in JavaScript
+               i_x: integer x coordinate
+               i_y: integer y coordinate
+               iid: integer id
                k_v: [ key , val ] tuple.
                key: Key in [ key , val ] or in { key : val }
                len: Number of elements in array.
                log: Writes string to console.
+               nam: name string
                new: New keyword instantiates instances
                nir: Number_Iterations_Ran
+               out: output variable
                pac: Path And Contenttype
                pam: PAraMeters (url parameters after "?")
                pas: Did whatever pass boolean as integer.
@@ -990,6 +1003,7 @@ HN1_Mai();
                tab: Four spaces.
                tls: Transport_Layer_Security (Updated ssl)
                try: Attempt a block of guarded code.
+               typ: Type of value enumerated by 3 characters.
                url: Uniform_Resource_Locator
                val: Val in [ key , val ] or in { key : val }
                var: function scope variable
@@ -1001,6 +1015,7 @@ HN1_Mai();
               "/J": Routes to our JavaScript file.
               "/K": Routes to our "key._" file.
               "/R": SHORT path: Read    ( DEMONSTRATION )
+              "/S": Path to print out [ sob ] object.
               "/U": SHORT path: Update  ( DEMONSTRATION )
               "HT": Shorthand for "text/html"       in router.
               "JS": Shorthand for "text/javascript" in router.
@@ -1010,12 +1025,14 @@ HN1_Mai();
               EDCL: Expected_Dead_Code_Line
               HTML: Hyper Text Markup Language
               Html: A stupid way to write "HTML"
+              Math: Math library object in JavaScript
               PORT: PORT number server application listens on
               PORT: defined if deployed on Heroku or Azure
               else: Denotes alternative block of code.
               func: NOT a keyword. Function pointer variable.
               http: http package that comes with Node.js
               http: hyper_text_transer_protocol
+              join: join  array into string using delimeter
               null: A pointer to nothing. 
               rows: Rows returned from sql query
               seal: Do not allow new properties to be added.
@@ -1023,7 +1040,9 @@ HN1_Mai();
               true: Boolean value for [  set/on ] bit.
               void: Function takes or returns nothing.
              "/JQ": Path to serve jquery.js from
+             "INT": Denotes integer input
              "SQL": Structured_Query_Language (Folder)
+             DEBUG: Denotes debug message or debug code.
              ROUTE: Relative url identifying page or resource
              alert: Display an alert box
              async: Denotes an asynchronous function.
@@ -1031,8 +1050,10 @@ HN1_Mai();
              catch: Do this if promise rejected or error.
              const: immutable block-scope variable
              false: Boolean value for [unset/off] bit.
+             floor: floor function in Math library
              query: Run an SQL query on database.
              serve: To deliver data from server to client
+             split: split string into array using delimeter
              sql._: A test SQL file to help figure things out.
              throw: Throw an error
              title: Node representing <title> element.
@@ -1078,11 +1099,21 @@ HN1_Mai();
            HN5_E09: HerokuNode(lean)[ #5 ] : Error[ #9 ]
            HN6_E01: HerokuNode(lean)[ #6 ] : Error[ #1 ]
            HN6_E02: HerokuNode(lean)[ #6 ] : Error[ #2 ]
+           HN7_E01: HerokuNode7_Error_01
+           HN7_E02: HerokuNode7_Error_02
+           HN7_E03: HerokuNode7_Error_03
+           HN7_ERR: An error in HN7 code additions.
+           HN7_SVF: SQL_Variable_Format
            IMPORTS: A list of imports at top of file.
+           JSODELO: JavaScript_ObjectDotEntries_LOop (Snippet)
            Minimal: No extranious moving parts.
            NOT_SET: Denotes forgot to set string value.
+           NOT_SOB: Denotes object is NOT an [ sob ] type.
            Promise: Promise class built into NodeJS
+           SOB_VIT: An integer tag to identify [ sob ] type.
            SOB_VIT: Enum: sob's VIT:VariableIntegerType 
+           THE_KEY: Debug message showing key of [key,val]
+           WHO_AMI: [variable/file] used to wire up API
            any_obj: Any_OBJect
            arr_ent: ARRay_of_ENTries (NOT:AN entry within array)
            charset: Denote character encoding of file. 
@@ -1097,12 +1128,12 @@ HN1_Mai();
            inn_err: INNput_ERRor
            jum_dic: JUMp_DICtionary (Like a jumptable)
            key_val: [ key , val ]
+           msg_err: MeSsaGe_ERRor
            not_nil: Denote object is not [nil/null]
            obj_cin: OBJect_ConnectionINformation
            obj_ent: Object.entries
            obj_err: Object of duck-type error.
            process: built-in Node.js global [variable/object]
-           rar_daw: [ raw , daw ] packed together.
            raw_daw: [ raw , daw ] packed into tuple.
            require: Like: Java import, C# using , C include
            ror_boo: ResolveOrReject_BOOlean
@@ -1114,6 +1145,9 @@ HN1_Mai();
            str_val: STRing_val (val as string)
            tab_act: TABle_of_ACTions
            tab_daw: TABle_of_DataAndWhatever
+           tab_typ: TABle_of_TYPes
+           tok_fin: TOKen_FINd
+           tok_rep: TOKen_REPlace
           "COMMIT": Commit changes made by SQL transation.
           WHATEVER: Interpret it as data,function or whatever.
           document: Root node of the HTML document.
@@ -1128,6 +1162,7 @@ HN1_Mai();
          "/CRUD_D": LONG  path: Delete  ( DEMONSTRATION )
          "/CRUD_R": LONG  path: Read    ( DEMONSTRATION )
          "/CRUD_U": LONG  path: Update  ( DEMONSTRATION )
+         "IGNORED": This string data isn't doing anything.
          setHeader: Sets single header value for headers object.
          undefined: like null, but usually indicates MISTAKE.
          writeHead: Sends a response header to the request
@@ -1135,6 +1170,10 @@ HN1_Mai();
         "/JOSH.JS": Routes to: ./JOSH/JOSH.JS
         JavaScript: The language used by Node.js servers
         Javascript: Poorly capitalized "JavaScript"
+       "./SQL/C._": Example "Create" SQL code file.
+       "./SQL/D._": Example "Delete" SQL code file.
+       "./SQL/R._": Example "Read"   SQL code file.
+       "./SQL/U._": Example "Update" SQL code file.
        "SQL_RUN_C": Tells us a CREATE function should be ran.
        "SQL_RUN_D": Tells us a DELETE function should be ran.
        "SQL_RUN_R": Tells us a READ   function should be ran.
@@ -1146,6 +1185,7 @@ HN1_Mai();
        HN2_Get_fas: Get_file_as_string
        HN3_Run_cof: Run_contents_of_file
        HN3_Run_fas: Run_file_as_string
+       HN7_Run_fap: Run_file_and_parameters (queryparams)
        Heroku_Node: Denotes a project using Heroku & Node.js
        app_bas_url: Application_Base_Url. (root of website)
       "text/plain": "Content-Type" for plain text, NOT code.
@@ -1156,6 +1196,8 @@ HN1_Mai();
       hn3_executor: Private executor func with HN3 namespace.
       njs_rejector: Rejector function built into NodeJS
       njs_resolver: Resolver function built into NodeJS
+     "./WHO_AMI._": File used to wire up API
+     "./server.js": The node.js server code.
      HN4_SQL_Run_C: Action to run CREATE sql command.
      HN4_SQL_Run_D: Action to run DELETE sql command.
      HN4_SQL_Run_R: Action to run READ   sql command.
@@ -1173,11 +1215,14 @@ HN1_Mai();
   "DOCUMENT_TITLE": Placeholder string.
   connectionString: Provider uses this to connect to database.
  "./JOSH/JOSH.HTM": Actual file "/JOSH.HT" [maps/routes] to.
+ "/TAB_001_UPDATE": Routing path to "./SQL/TAB_001_UPDATE._"
  "EDCL:2020_07_14": EDCL error as unique string
  "text/javascript": "Content-Type" for javascript files
+"./SQL/TAB_001_UPDATE._" :::::: SQL with template placeholders
 "./node_modules/jquery/dist/jquery.js" : NPM puts JQuery Here
 "ROWS_OBJECT_DOES_NOT_EXIST" :: Helpful info for example code.
 "ROWS_OBJECT_IS_EMPTY_ARRAY" :: Helpful info for example code.
+FILE_SCOPE_CONSTANTS :::::::::: Constants at file scope 
 FILE_SCOPE_VARIABLES :::::::::: File scope in the C99 sense.
 HN5_Cli_End ::::::::::::::::::: Client.end()
 HN5_End_001 ::::::::::::::::::: End response using 1 parameter
@@ -1193,7 +1238,10 @@ HN5_err_CTO_str ::::::::::::::: Error ConvertTO string
 HN5_sob ::::::::::::::::::::::: State_Object_Bundle
 HN6_Ser_Fil_HTM ::::::::::::::: Serve_File: HTML
 HN6_Ser_Fil_JAS ::::::::::::::: Serve_File: JavaScript
+ROWS_OBJECT_DOES_NOT_EXIST::::: Helpful info for example code.
+ROWS_OBJECT_IS_EMPTY_ARRAY::::: Helpful info for example code.
 const A=(B)=>{...} :::::::::::: function "A" taking param "B"
 rejectUnauthorized :::::::::::: verifying server identity?
+
 
 **-*********************************************************-**/
