@@ -13,6 +13,16 @@
                 var uoa   ;  
                 var p_s   ; //: api_pam_str
                 var nir   ;
+
+                //:Need to define the base-url of your
+                //:application in order to wire-up calls.
+                //:This is done by including "WHO_AMI"
+                //:script that defines "WHO_AMI" variable.
+                if( !WHO_AMI ){
+                    var msg_err=("[REQUIRES:WHO_AMI:SCRIPT]");
+                    window.alert( msg_err );
+                    throw(        msg_err );
+                };;
             
                 //:Build_Query_String_From_Object:
                 if( null != p_o ){
@@ -24,12 +34,6 @@
                         if( nir > 0 ){ p_s += "&" ; };
                         p_s += (  k_v[0]+ "=" +k_v[1] );
                     };;
-                };;
-                
-                if( !WHO_AMI ){
-                    var msg_err=("[REQUIRES:WHO_AMI:SCRIPT]");
-                    window.alert( msg_err );
-                    throw(        msg_err );
                 };;
                 var uoa =(""                                + ""
                     +"https://"                             + ""
@@ -54,7 +58,7 @@
                     if( null != cbf ){
                         var r_t =( xhr.responseText );
                         if( "XHR" == wan ){ cbf( xhr ); }else
-                        if( "R_T" == wan ){ cbr( r_t ); }else
+                        if( "R_T" == wan ){ cbf( r_t ); }else
                         if(   1   ==  1  ){
                             throw("[DONT_KNOW_WHAT_TO_DO]");
                         };;
