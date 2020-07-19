@@ -89,7 +89,18 @@
     const API_Get_Exa=function(){
         
         var cbf=( API_Get_Exa_CBF );
-        API_Get_004( "TAB_001_UPDATE" , {}, cbf, "R_T" );
+        API_Get_004( 
+            "TAB_001_UPDATE" 
+        ,   {
+                i_x: 1
+            ,   i_y: 2
+            ,   nam: "BOOGALA_BOO"
+            ,   url: "www.boogalaboo.com"
+
+            }
+        ,   cbf
+        ,   "R_T" 
+        );;
 
     };;
 
