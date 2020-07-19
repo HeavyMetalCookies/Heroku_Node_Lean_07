@@ -1,32 +1,78 @@
 
     $( document ).prop( "title" , "[JOSH.*]" );
 
-    const CALL_REST_SERVICE=function(){ "use strict"
-
-        //:alert("[TODO:CALL_REST_SERVICE]");
-
-        var url =(""                                   +""
-            +"https://"                                +""
-            +"hn6.herokuapp.com/"                      +""
-            +"R"                                       +""
-        );;
-        var xhr_req = new XMLHttpRequest();
-            xhr_req.open("GET",url);
-            xhr_req.send();
-            xhr_req.onreadystatechange=(e)=>{
-                console.log(e                     );
-                console.log( xhr_req.status       );
-                console.log( xhr_req.readyState   );
-                console.log( xhr_req.responseText );
-                if( xhr_req.readyState===4 ){
-                    
-                   $( document.body ).append(
-                        $("<pre>").text( xhr_req.responseText )
-    
-                    );;
-
+            const API_Get_004=function( 
+                a_e       //: api_end 
+            ,   p_o       //: api_pam_obj
+            ,   cbf       //: callback_function
+            ,   wan       //: what do you want back? 
+                          //: "XHR" or "R_T"
+            ){ 
+            "use strict"
+                var xhr   ;  
+                var uoa   ;  
+                var p_s   ; //: api_pam_str
+                var nir   ;
+            
+                //:Build_Query_String_From_Object:
+                if( null != p_o ){
+                    p_s="";
+                    nir=(0-1);
+                    for( var k_v of Object.entries( p_o )  ){
+                        nir++;
+                        if( nir== 0 ){ p_s += "?" ; };
+                        if( nir > 0 ){ p_s += "&" ; };
+                        p_s += (  k_v[0]+ "=" +k_v[1] );
+                    };;
                 };;
-            };;
+                
+                if( !WHO_AMI ){
+                    var msg_err=("[REQUIRES:WHO_AMI:SCRIPT]");
+                    window.alert( msg_err );
+                    throw(        msg_err );
+                };;
+                var uoa =(""                                + ""
+                    +"https://"                             + ""
+                    +((((((((((((((( WHO_AMI )))))))))))))))+ ""
+                    +   "/"                                 + ""
+                    +   a_e                                 + ""
+                    +   p_s                                 + ""
+                );;
+                xhr = new XMLHttpRequest();
+                xhr.open("GET",uoa);
+                xhr.send();
+                xhr.onreadystatechange=( nat_eve )=>{
+                if( 4 == xhr.readyState ){
+                        
+                    if( null == cbf ){
+                        //:Default_Feedback:
+                        $( document.body ).append(
+                            $("<pre>").text( xhr.responseText )
+                    
+                        );;
+                    }else
+                    if( null != cbf ){
+                        var r_t =( xhr.responseText );
+                        if( "XHR" == wan ){ cbf( xhr ); }else
+                        if( "R_T" == wan ){ cbr( r_t ); }else
+                        if(   1   ==  1  ){
+                            throw("[DONT_KNOW_WHAT_TO_DO]");
+                        };;
+                    }else{
+                        throw("[EDCL:2020_07_19]");
+                    };;
+                
+                };;};;
+            };;//://///////////////////////////:[API_Get_004]://
+
+    const API_Get_Exa_CBF=function( r_t ){
+        alert("[API_Get_Exa_CBF:r_t]",r_t);
+    };;
+    const API_Get_Exa=function(){
+        
+        var cbf=( API_Get_Exa_CBF );
+        API_Get_004( "R" , {}, cbf, "R_T" );
+
     };;
 
     const CreateDocumentBodyIfNotExists=function(){
@@ -48,5 +94,5 @@
     doc_bod.append(
         $("<button>")
             .text( "TEST" )
-            .click( CALL_REST_SERVICE )
+            .click( API_Get_Exa )
     );;
