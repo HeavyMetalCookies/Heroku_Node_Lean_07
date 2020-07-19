@@ -70,9 +70,9 @@
             };;//://///////////////////////////:[API_Get_004]://
 
     const Ind_Lin=function( msg ){
-        var tabs=(" ".repeat( 4 * 2 ) );
-        msg = msg.split("\n").join( "\n" + tabs );
-        msg = tabs + msg;
+        var tab=(" ".repeat( 4 * 2 ) );
+        msg = msg.split("\n").join( "\n" + tab );
+        msg = tab + msg;
         return( msg );
     };;
 
@@ -89,7 +89,7 @@
     const API_Get_Exa=function(){
         
         var cbf=( API_Get_Exa_CBF );
-        API_Get_004( "R" , {}, cbf, "R_T" );
+        API_Get_004( "UPDATE_TAB_001" , {}, cbf, "R_T" );
 
     };;
 

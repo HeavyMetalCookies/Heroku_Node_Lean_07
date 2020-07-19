@@ -671,6 +671,14 @@ const HN5_Pri_sob_ASA_cof_ros=function(
 
 //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
 
+//:Run File_And_Parameters.
+//:Gets file contentents and replaces parameters with
+//:query string values before running.
+const HN7_Run_fap=function( sob ){ "use strict"
+
+    HN5_End_002( sob, "[TODO:HN7_Run_fap]" );
+};;
+
 //://////////////////////////////////////////////////////////://
 //:                                                          ://
 //: main request routing function.                           ://
@@ -727,6 +735,9 @@ const HN2_Rou=function( req , res ){ "use strict"
 
     ,   "/WHO_AMI":[ "./WHO_AMI._" , "JS" ]
 
+    ,   "/UPDATE_TAB_001"
+        :[ "./SQL/UPDATE_TAB_001._" , "HN7_Run_fap" ]
+
         //:M:Matching. Routes matching their served files.   ://
         //:-:This is so we can run files locally or on server://
         //:-:without changing the hard coded script files.   ://
@@ -763,6 +774,7 @@ const HN2_Rou=function( req , res ){ "use strict"
     ,   "SQL_RUN_D"       : HN4_SQL_Run_D
 
     ,   "HN5_Wri_sob"     : HN5_Wri_sob_AND_end
+    ,   "HN7_Run_fap"     : HN7_Run_fap
     };;
 
     //:rar:Request_And_Response:
