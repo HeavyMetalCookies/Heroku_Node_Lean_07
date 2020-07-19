@@ -1,21 +1,17 @@
 
     //://////////////////////////////////////////////////////://
 
-            HN6 == HN5 + NEW_FUNCTIONALITY_IN_HN6:
+            HN7 == HN6 + NEW_FUNCTIONALITY_IN_HN7:
 
     //://////////////////////////////////////////////////////://
 
-        NEW_FUNCTIONALITY_IN_HN6:
+        NEW_FUNCTIONALITY_IN_HN7:
 
-            1.  UI to call different "servlets" / "routes".
-                1.1: ./JOSH/JOSH.HTM
-                1.2: ./JOSH/JOSH.JS
+            1.  Able to run templated SQL code.
+                SEE: SQL/TAB_001_UPDATE._
+                SEE: HN7_Run_fap
 
-            2.  Jquery has been added to project.
-
-            3.  New routes added:
-                3.1: <app_base_url> /JOSH.HT
-                3.2: <app_base_url> /JOSH.JS
-                3.3: <app_base_url> /JQ
+            2.  UI that calls SQL with parameters.
+                SEE: <app_base_url> /JOSH.HT
 
     //://////////////////////////////////////////////////////://
