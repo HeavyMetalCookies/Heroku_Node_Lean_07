@@ -70,7 +70,13 @@
             };;//://///////////////////////////:[API_Get_004]://
 
     const API_Get_Exa_CBF=function( r_t ){
-        alert("[API_Get_Exa_CBF:r_t]",r_t);
+        var msg=(""
+        +   "[API_Get_Exa_CBF:r_t]"
+        +   "((("
+        +    r_t
+        +   ")))"
+        );;
+        alert( msg );
     };;
     const API_Get_Exa=function(){
         
