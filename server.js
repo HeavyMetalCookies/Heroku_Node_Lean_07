@@ -734,9 +734,11 @@ const HN7_Run_fap=function( sob ){ "use strict"
             throw("[HN7_E01]:" + HN5_err_CTO_str( err ) ); 
         };;
 
+        var arr_k_v=( Object.entries( sob.pam ) );
+
         //:Edit contents_of_file ( cof ) so that it
         //:is loaded with values from query.
-        for( var k_v in Object.entries( sob.pam ) ){
+        for( var k_v in arr_k_v ){
 
             var tok_fin=( "{{" + k_v[0] + "}}" );
             var tok_rep=(  HN7_SVF( k_v )  );  
