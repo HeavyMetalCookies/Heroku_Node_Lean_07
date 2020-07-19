@@ -757,7 +757,8 @@ const HN7_Run_fap=function( sob ){ "use strict"
 
         }).catch((err)=>{
 
-            HN5_Wri_002(sob,"[HN7_E02]");
+            var str_err=( HN5_err_CTO_str( err ) );
+            HN5_Wri_002(sob,"[HN7_E02]:" + str_err );
             HN5_End_001( sob );
         });;
 
