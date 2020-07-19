@@ -738,7 +738,7 @@ const HN7_Run_fap=function( sob ){ "use strict"
 
         //:Edit contents_of_file ( cof ) so that it
         //:is loaded with values from query.
-        for( var k_v in arr_k_v ){
+        for( var k_v of arr_k_v ){
 
             var tok_fin=( "{{" + k_v[0] + "}}" );
             var tok_rep=(  HN7_SVF( k_v )  );  
