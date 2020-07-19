@@ -70,7 +70,9 @@
             };;//://///////////////////////////:[API_Get_004]://
 
     const Ind_Lin=function( msg ){
-        msg = msg.split("\n").join( "\n" + "    " );
+        var tabs=(" ".repeat( 4 * 2 ) );
+        msg = msg.split("\n").join( "\n" + tabs );
+        msg = tabs + msg;
         return( msg );
     };;
 
