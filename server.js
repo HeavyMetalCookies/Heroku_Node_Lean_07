@@ -728,8 +728,10 @@ const HN7_SVF=function( k_v ){
         out = out.split("\\").join("");
         out = out.split("." ).join("");
         out =( "'" + out + "'" );
-    }else
+    }else{
+
         throw("[HN7_ERR:UNKNOWN_TYPE_IN_TYPE_TABLE]");
+
     };;
 
     return( out );
