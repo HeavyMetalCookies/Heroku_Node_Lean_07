@@ -736,6 +736,9 @@ const HN7_Run_fap=function( sob ){ "use strict"
 
         var arr_k_v=( Object.entries( sob.pam ) );
 
+        //:Hackishly_Cast_Contents_Of_File_To_String:
+        cof=(""+cof);
+
         //:Edit contents_of_file ( cof ) so that it
         //:is loaded with values from query.
         for( var k_v of arr_k_v ){
