@@ -689,7 +689,14 @@ const HN7_SVF=function( k_v ){
     var key=( k_v[ 0 ] );
     var val=( k_v[ 1 ] );
     var typ=( tab_typ[ key ] );
-    if(!typ){ throw("[HN7_ERR:VALUE_NOT_IN_TYPE_TABLE]"); };
+
+    if(!typ){ 
+        var msg_err=(""
+        +   "[HN7_ERR:KEY_NOT_IN_TYPE_TABLE]:"
+        +   "[THE_KEY]:(" + key + ")"
+        );;
+        throw( msg_err );
+    };;
 
     if( "INT" == typ ){
         out = ( Math.floor( val ) ).toString()
